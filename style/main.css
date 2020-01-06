@@ -1,0 +1,23 @@
+main.wrapper {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.wrapper .container {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    max-width: 60vw;
+
+    z-index: 1;
+
+    margin: 0 auto;
+    position: relative;
+}
+
+footer {
+    text-align: right;
+}
