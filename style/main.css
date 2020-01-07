@@ -10,7 +10,7 @@ main.wrapper {
 
     width: 100%;
     max-width: 100%;
-    max-width: 60vw;
+    max-width: 70vw;
 
     z-index: 1;
 
@@ -20,4 +20,25 @@ main.wrapper {
 
 footer {
     text-align: right;
+}
+
+nav.fixedNav {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 28px;
+    background-color:#2c3e50;
+    border-color:#2c3e50;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+}
+
+nav.fixedNav a {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 20%;
 }
