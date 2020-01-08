@@ -10,12 +10,18 @@ main.wrapper {
 
     width: 100%;
     max-width: 100%;
-    max-width: 70vw;
+    max-width: 75vw;
 
     z-index: 1;
 
     margin: 0 auto;
     position: relative;
+}
+
+section img {
+    border: 2px dotted #606c76;
+    padding: 2px;
+    margin-bottom: 2.5rem;
 }
 
 footer {
@@ -31,7 +37,7 @@ nav.fixedNav {
     background-color:#2c3e50;
     border-color:#2c3e50;
     position: fixed;
-    right: 1rem;
+    left: 1rem;
     bottom: 1rem;
 }
 
