@@ -42,6 +42,10 @@ main > * {
     background: rgba(255, 255, 255, 0.75);
 }
 
+section h1 {
+    text-align: center;
+}
+
 section img {
     border: 2px dotted #606c76;
     padding: 2px;
