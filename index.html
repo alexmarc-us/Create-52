@@ -13,12 +13,13 @@
 			<link rel="icon" type="image/png" href="./style/favicon-32x32.png" sizes="32x32">
 			<link rel="icon" type="image/png" href="./style/favicon-16x16.png" sizes="16x16">
 			<link rel="icon" type="image/png" href="./style/favicon-128.png" sizes="128x128">
-			<!-- <script src="script.js"></script> -->
 		</head>
 		<body>
 			<main class="wrapper">
 				<header class="container">
-					<a href="./index.html"><img src="./style/logo.png" alt="Logo for Create 52" /></a>
+					<a href="./index.html">
+						<img src="./style/logo.png" alt="Logo for Create 52" style="z-index: 5;position: relative;">
+					</a>
 				</header>
 				<section class="container">
 					<h1>Tracking a Year of Creativity</h1>
@@ -33,75 +34,148 @@
 					</p>
 				</section>
 				<section id="tracker" class="container">
-					<h2>The Tracker</h2>
+					<h2>The Weekly Tracker</h2>
 					<ol>
-							<li><a href="./one">A Creative Habit on Display</a></li>
-							<li><a href="./two">A Logo, Divided</a></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+						<li><a href="./one">A Creative Habit on Display</a></li>
+						<li><a href="./two">A Logo, Divided</a></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
 					</ol>
 				</section>
 				<footer class="container">
-						<p>
-							By Alex Marcus
-						</p>
-						<p class="license">
-							The content of this site is licensed under a <a href="https://mit-license.org/">MIT License</a>.
-						</p>
-					</footer>
+					<p>
+						By Alex Marcus
+					</p>
+					<p class="license">
+						The content of this site is licensed under a <a href="https://mit-license.org/">MIT License</a>.
+					</p>
+				</footer>
 			</main>
 			<nav class="fixedNav">
-					<a href="/">
-						<img src="./style/am.png" />
-					</a>
-				</nav>
+				<a href="/">
+					<img src="./style/am.png" />
+				</a>
+			</nav>
+			<script type="text/javascript">
+				/*
+				* Tracker code
+				* Determines progress throughout the year based on entries in the tracker list
+				*/
+
+				// Get current day out of year
+				var now = new Date();
+				var start = new Date(now.getFullYear(), 0, 0);
+				var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+				var oneDay = 1000 * 60 * 60 * 24;
+				var dayOfYear = Math.floor(diff / oneDay);
+				var weekOfYear = dayOfYear / 7;
+
+				// Get all list items
+				var trackerItems = document.querySelectorAll("#tracker ol li");
+
+				/**
+				 * Marks items based on completion and date
+				 */
+				function markItem(item, weekDiff) {
+					// For fun, get a random rotation for each marker
+					const rotation = 'rotate(' + (Math.random() * 30 - 15) + 'deg) scale(2)';
+					
+					// Determine if list items as past, current, or future
+					if (weekDiff < 0) {
+						/**
+						 * Weeks in the past are either complete or incomplete
+						 */
+
+						// Check if the item has content (that week has been completed) and add mark to list
+						if (currentItem.innerHTML !== '') {
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/complete.png" style="transform: ' + rotation + ';" alt="Complete" />';
+						} else {
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/incomplete.png" style="transform: ' + rotation + ';" alt="Incomplete" />';
+						}
+
+					} else if (weekDiff >= 0 && weekDiff <= 1) {
+						/**
+						 * Weeks in the present are either complete in progress
+						 */
+
+						// Check if the item has content (that week has been completed) and add mark to list
+						if (currentItem.innerHTML !== '') {
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/complete.png" style="transform: ' + rotation + ';" alt="Complete" />';
+						} else {
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/progress.png" style="transform: ' + rotation + ';" alt="Progress" />';
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/pending.png" style="transform: ' + rotation + ';" alt="Pending" />';
+						}
+					} else {
+						/**
+						 * Weeks in the future are either complete or pending
+						 */
+
+						// Check if the item has content (that week has been completed) and add mark to list
+						if (currentItem.innerHTML !== '') {
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/complete.png" alt="Complete" />';
+						} else {
+							currentItem.innerHTML = currentItem.innerHTML + '<img src="./style/pending.png" alt="Pending" />';
+						}
+					}
+				}
+				
+				// Loop through and mark all list items
+				for (var i = 0; i < trackerItems.length; i++) {
+
+					var currentItem = trackerItems[i];
+					var itemWeek = i + 1;
+
+					markItem(currentItem, itemWeek - weekOfYear);
+
+				}
+			</script>
 		</body>
 </html>
