@@ -16,7 +16,7 @@
 		</head>
 		<body>
 			<main class="wrapper">
-				<header class="container">
+				<header />
 					<a href="./index.html">
 						<img src="./style/logo.png" alt="Logo for Create 52" style="z-index: 5;position: relative;">
 					</a>
@@ -38,7 +38,7 @@
 					<ol>
 						<li><a href="./one">A Creative Habit on Display</a></li>
 						<li><a href="./two">A Logo, Divided</a></li>
-						<li></li>
+						<li><a href="./three">Tracking Weekly</a></li>
 						<li></li>
 						<li></li>
 						<li></li>
@@ -169,12 +169,10 @@
 				
 				// Loop through and mark all list items
 				for (var i = 0; i < trackerItems.length; i++) {
-
 					var currentItem = trackerItems[i];
 					var itemWeek = i + 1;
 
 					markItem(currentItem, itemWeek - weekOfYear);
-
 				}
 			</script>
 		</body>

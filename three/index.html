@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+			<meta charset="utf-8">
+			<title>Tracking Weekly by Alex Marcus</title>
+			<link rel="stylesheet" href="../style/milligram.css">
+			<link rel="stylesheet" href="../style/main.css">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="description" content="Create*52 number three - Tracking Weekly">
+			<meta name="author" content="Alex Marcus">
+			<link rel="icon" type="image/png" href="../style/favicon-196x196.png" sizes="196x196">
+			<link rel="icon" type="image/png" href="../style/favicon-96x96.png" sizes="96x96">
+			<link rel="icon" type="image/png" href="../style/favicon-32x32.png" sizes="32x32">
+			<link rel="icon" type="image/png" href="../style/favicon-16x16.png" sizes="16x16">
+			<link rel="icon" type="image/png" href="../style/favicon-128.png" sizes="128x128">
+			<!-- <script src="script.js"></script> -->
+		</head>
+		<body>
+			<main class="wrapper">
+				<header />
+					<a href="../index.html"><img src="../style/logo.png" alt="Logo for Create 52" /></a>
+				</header>
+				<section class="container">
+					<h1>Three: Tracking Weekly</h1>
+					<p>
+						As a third and final<sup>‡</sup> contribution to the Create*52 website (see <a href="../one">One</a> and <a href="../two">Two</a>), I added a weekly tracker of my progress.  This project was a fun combination of code, Illustrator, and self-motivation.
+					</p>
+					<p>
+						The purpose behind Create*52's <a href="../">home page</a> is twofold:
+						<ol>
+							<li>Provide a directory of all the creative projects I complete in 2020</li>
+							<li>Encourage me to stay on schedule with public accountability</li>
+						</ol> 
+						The latter is something that I find very motivating.  By putting myself on a schedule, and displaying my own adherence to that schedule, I help to encourage myself to stick to the plan.  If I'm going to do this for a year, I will need to be held accountable.
+					</p>
+					<p>
+						The home page is set up to automatically check my progress and display the results in The Weekly Tracker.  A series of icons rendered along each week's slot indicates whether that week was completed on time, and if it is the current in-progress week.  Whether a week is "complete" is determined by whether I have posted a link for that week's project.
+					</p>
+					<figure>
+						<img src="./tracker.png" alt="The Weekly Tracker" />
+						<figcaption>
+							The Weekly Tracker, prior to posting this page.  Note the ❌, since the due date for posting had already passed.
+						</figcaption>
+					</figure>
+					<figure>
+						<img src="./tracker2.png" alt="The Weekly Tracker" />
+						<figcaption>
+							The Weekly Tracker, after posting this page.  One more week, completed!
+						</figcaption>
+					</figure>
+					<p>
+						The Weekly Tracker is, code-wise, mostly just a big if statement based on the week of the year.  Images are inserted into the DOM based on my progress.  The most interesting bit is how the week of the year is determined:
+						<pre>
+// Get current day out of year
+var now = new Date();
+var start = new Date(now.getFullYear(), 0, 0);
+var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+var oneDay = 1000 * 60 * 60 * 24;
+var dayOfYear = Math.floor(diff / oneDay);
+var weekOfYear = dayOfYear / 7;</pre>
+						Since there are 52 weeks in the year, and 52 items in the Weekly Tracker, determining my progress and applying a marker with the week number was trivial.  The nice thing about this system is that it is entirely dependant on my action of posting a project for marking.
+						<pre>
+// Determine if list items as past, current, or future
+if (weekDiff < 0) {
+	/**
+	* Weeks in the past are either complete or incomplete
+	*/
+	...
+} else if (weekDiff >= 0 && weekDiff <= 1) {
+	/**
+	* Weeks in the present are either complete in progress
+	*/
+	...
+} else {
+	/**
+	* Weeks in the future are either complete or pending
+	*/
+	...
+}</pre>
+					</p>
+					<p>
+						Overall, I'm pretty happy with this system.  I'm hoping it will provide visitors a sense of where I am in the year's work, and provide myself a nudge to keep creating.
+					</p>
+					<p class="aside">
+						<sup>‡</sup> I doubt this is the final site design.  I've learned over the years that I'm never really satisfied with my design work - everything is subject to change.
+					</p>
+				</section>
+				<footer class="container">
+					<p>
+						By Alex Marcus
+					</p>
+					<p class="license">
+						The content of this site is licensed under a <a href="https://mit-license.org/">MIT License</a>.
+					</p>
+				</footer>
+			</main>
+			<nav class="fixedNav">
+				<a href="/">
+					<img src="../style/am.png" />
+				</a>
+			</nav>
+		</body>
+</html>
