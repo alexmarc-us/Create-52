@@ -21,12 +21,14 @@ main.wrapper {
     overflow: hidden;
     position: relative;
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .wrapper .container {
     display: block;
 
-    width: 600px;
+    width: 800px;
     max-width: 95vw;
 
     z-index: 1;
