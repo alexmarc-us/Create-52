@@ -69,12 +69,16 @@ section h1 {
     text-align: center;
 }
 
-section img {
+section img, section iframe {
     border: 2px dotted #606c76;
     padding: 2px;
     margin: 1em auto;
     display: block;
     margin-bottom: 2.5rem;
+}
+
+section p {
+    text-indent: 1em;
 }
 
 section figure figcaption {
